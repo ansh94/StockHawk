@@ -13,6 +13,7 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -90,34 +91,54 @@ public final class QuoteSyncJob {
 
                 if (stock.isValid()) {
 
-
+                    String name = stock.getName();
                     float price = quote.getPrice().floatValue();
                     float change = quote.getChange().floatValue();
                     float percentChange = quote.getChangeInPercent().floatValue();
 
-                    // WARNING! Don't request historical data for a stock that doesn't exist!
-                    // The request will hang forever X_x
-                    List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
+                    try{
+                        // WARNING! Don't request historical data for a stock that doesn't exist!
+                        // The request will hang forever X_x
 
-                    StringBuilder historyBuilder = new StringBuilder();
 
-                    for (HistoricalQuote it : history) {
-                        historyBuilder.append(it.getDate().getTimeInMillis());
-                        historyBuilder.append(", ");
-                        historyBuilder.append(it.getClose());
-                        historyBuilder.append("\n");
+                        /*
+                        Requests the historical quotes for this stock with the following characteristics.
+                        from: start date of the historical data
+                        to: end date of the historical data
+                        interval: the interval of the historical data
+                         */
+                        List<HistoricalQuote> history = stock.getHistory(from, to, Interval.WEEKLY);
+
+                        StringBuilder historyBuilder = new StringBuilder();
+
+                        for (HistoricalQuote it : history) {
+                            historyBuilder.append(it.getDate().getTimeInMillis());
+                            historyBuilder.append(", ");
+                            historyBuilder.append(it.getClose());
+                            historyBuilder.append("\n");
+                        }
+
+                        Timber.d("Historical quote = "+historyBuilder.toString());
+
+
+                        ContentValues quoteCV = new ContentValues();
+                        quoteCV.put(Contract.Quote.COLUMN_SYMBOL, symbol);
+                        quoteCV.put(Contract.Quote.COLUMN_NAME, name);
+                        quoteCV.put(Contract.Quote.COLUMN_PRICE, price);
+                        quoteCV.put(Contract.Quote.COLUMN_PERCENTAGE_CHANGE, percentChange);
+                        quoteCV.put(Contract.Quote.COLUMN_ABSOLUTE_CHANGE, change);
+
+
+                        quoteCV.put(Contract.Quote.COLUMN_HISTORY, historyBuilder.toString());
+
+                        quoteCVs.add(quoteCV);
+
+                    } catch (FileNotFoundException e){
+                        Timber.d("Invalid stock with no stock history : " + stock.getSymbol() + " removed");
+                        PrefUtils.removeStock(context, stock.getSymbol());
+                        sendBroadcast(context, stock.getSymbol());
                     }
 
-                    ContentValues quoteCV = new ContentValues();
-                    quoteCV.put(Contract.Quote.COLUMN_SYMBOL, symbol);
-                    quoteCV.put(Contract.Quote.COLUMN_PRICE, price);
-                    quoteCV.put(Contract.Quote.COLUMN_PERCENTAGE_CHANGE, percentChange);
-                    quoteCV.put(Contract.Quote.COLUMN_ABSOLUTE_CHANGE, change);
-
-
-                    quoteCV.put(Contract.Quote.COLUMN_HISTORY, historyBuilder.toString());
-
-                    quoteCVs.add(quoteCV);
 
                 } else {
                     Timber.d("Invalid stock : " + stock.getSymbol() + " removed");

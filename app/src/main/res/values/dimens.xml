@@ -1,3 +1,8 @@
 <resources>
     <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="material_default_padding">16dp</dimen>
+    <dimen name="stock_symbol_horizontal_padding">8dp</dimen>
+    <dimen name="stock_bidprice_text_size">42sp</dimen>
 </resources>

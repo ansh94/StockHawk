@@ -28,8 +28,34 @@
 
     <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
     <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
+    <string name="error_empty_list">No stock information available</string>
 
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+
+
+    <!--Fake values for StockDetails design -->
+    <string name="fake_symbol">GOOG</string>
+    <string name="fake_price">$ 1000.00</string>
+    <string name="fake_absolut">$ 5.60</string>
+    <string name="fake_change">100 %</string>
+
+    <!--Stock Widget strings -->
+    <string name="stock_widget_no_info">There is no information for the selected Stock</string>
+    <string name="title_activity_stock_widget_configure">StockWidgetConfigure</string>
+
+
+    <!--Widget Configuration screen -->
+    <string name="conf_button">Add Stock</string>
+    <string name="conf_symbol">Symbol (e.g. GOOG)</string>
+    <string name="conf_invalid_app_widget_id">Invalid AppWidgetID</string>
+
+    <!-- StockProvider Strings -->
+    <string name="provider_db_not_open">database could not be opened</string>
+    <string name="provider_widget_not_inserted">Widget could not be inserted</string>
+    <string name="provider_widget_delete_problem">There was a problem deleting the Widget</string>
+
 
 </resources>

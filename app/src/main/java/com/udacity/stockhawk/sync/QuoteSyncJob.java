@@ -33,7 +33,7 @@ import yahoofinance.quotes.stock.StockQuote;
 public final class QuoteSyncJob {
 
     private static final int ONE_OFF_ID = 2;
-    private static final String ACTION_DATA_UPDATED = "com.udacity.stockhawk.ACTION_DATA_UPDATED";
+    public static final String ACTION_DATA_UPDATED = "com.udacity.stockhawk.ACTION_DATA_UPDATED";
 
     //period that the job will run
     private static final int PERIOD = 300000;
@@ -118,7 +118,7 @@ public final class QuoteSyncJob {
                             historyBuilder.append("\n");
                         }
 
-                        Timber.d("Historical quote = "+historyBuilder.toString());
+                        //Timber.d("Historical quote = "+historyBuilder.toString());
 
 
                         ContentValues quoteCV = new ContentValues();

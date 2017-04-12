@@ -20,4 +20,18 @@
         <item name="android:textSize">25sp</item>
         <item name="android:textAllCaps">true</item>
     </style>
+
+    <style name="StockNameTextStyle">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+
+    <style name="CardBidPriceTextStyle" parent="BidPriceTextStyle">
+        <item name="android:textColor">@color/colorGray</item>
+    </style>
+
+    <style name="CardStockSymbolTextStyle" parent="StockSymbolTextStyle">
+        <item name="android:textColor">@color/colorGray</item>
+    </style>
 </resources>

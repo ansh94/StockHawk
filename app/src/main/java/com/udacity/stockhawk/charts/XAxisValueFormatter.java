@@ -21,7 +21,7 @@ public class XAxisValueFormatter implements IAxisValueFormatter {
         for(Calendar c: values){
             Timber.d(c.toString());
         }
-        Timber.d("Hello  " +mValues[2].toString());
+        //Timber.d("Hello  " +mValues[2].toString());
     }
 
     @Override
@@ -30,7 +30,7 @@ public class XAxisValueFormatter implements IAxisValueFormatter {
         Calendar date = mValues[(int) value];
         int dayOfMonth = date.get(Calendar.DAY_OF_MONTH);
         String formattedXaxisValue = String.valueOf(dayOfMonth)+ getFormattedDay(dayOfMonth) + " " +date.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US);
-        Timber.d(value + " : "+formattedXaxisValue);
+        //Timber.d(value + " : "+formattedXaxisValue);
         return formattedXaxisValue;
     }
 

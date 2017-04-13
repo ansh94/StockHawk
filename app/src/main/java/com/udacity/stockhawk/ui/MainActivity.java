@@ -159,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             // Get unknown stock symbol included in the Intent
             String symbol = intent.getStringExtra("UNKNOWN_STOCK");
             Timber.d("Got unknown symbol: " + symbol);
-            Toast.makeText(MainActivity.this, "Unknown stock! Try entering the correct stock symbol", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, R.string.unknown_stock_error, Toast.LENGTH_LONG).show();
         }
     };
 

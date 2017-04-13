@@ -6,8 +6,6 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import java.util.Calendar;
 import java.util.Locale;
 
-import timber.log.Timber;
-
 /**
  * Created by ANSHDEEP on 11-04-2017.
  */
@@ -18,10 +16,6 @@ public class XAxisValueFormatter implements IAxisValueFormatter {
 
     public XAxisValueFormatter(Calendar[] values) {
         this.mValues = values;
-        for(Calendar c: values){
-            Timber.d(c.toString());
-        }
-
     }
 
     @Override
@@ -29,12 +23,12 @@ public class XAxisValueFormatter implements IAxisValueFormatter {
         // "value" represents the position of the label on the axis (x or y)
         Calendar date = mValues[(int) value];
         int dayOfMonth = date.get(Calendar.DAY_OF_MONTH);
-        String formattedXaxisValue = String.valueOf(dayOfMonth)+ getFormattedDay(dayOfMonth) + " " +date.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US);
+        String formattedXaxisValue = String.valueOf(dayOfMonth) + getFormattedDay(dayOfMonth) + " " + date.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US);
         //Timber.d(value + " : "+formattedXaxisValue);
         return formattedXaxisValue;
     }
 
-    public String getFormattedDay(int dayOfMonth){
+    public String getFormattedDay(int dayOfMonth) {
         String appendix = "th";
 
         switch (dayOfMonth) {

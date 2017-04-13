@@ -6,10 +6,7 @@
     <dimen name="stock_symbol_horizontal_padding">8dp</dimen>
     <dimen name="stock_bidprice_text_size">42sp</dimen>
 
-    <!--
-Refer to App Widget Documentation for margin information
-http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
-    -->
+
     <dimen name="widget_margin">8dp</dimen>
     <dimen name="widget_header_padding">8dp</dimen>
 
@@ -20,4 +17,9 @@ http://developer.android.com/guide/topics/appwidgets/index.html#CreatingLayout
 
     <dimen name="widget_stock_default_width">250dp</dimen>
     <dimen name="widget_stock_min_resize_width">220dp</dimen>
+    <dimen name="bar_chart_padding">10dp</dimen>
+    <dimen name="grid_padding">8dp</dimen>
+    <dimen name="widget_change">3dp</dimen>
+    <dimen name="dialog_stock_top_margin">16dp</dimen>
+    <dimen name="dialog_stock_margin">4dp</dimen>
 </resources>

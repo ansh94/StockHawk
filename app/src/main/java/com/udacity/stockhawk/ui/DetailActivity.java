@@ -94,7 +94,7 @@ public class DetailActivity extends AppCompatActivity {
         // BarDataSet objects hold data which belongs together, and allow individual styling of that data.
 
         // adding entries to data set
-        BarDataSet set = new BarDataSet(historicalQuoteEntries, "Stock Closing Value");
+        BarDataSet set = new BarDataSet(historicalQuoteEntries, getString(R.string.stock_closing_value));
 
         // setting the color
         set.setColors(ColorTemplate.COLORFUL_COLORS);

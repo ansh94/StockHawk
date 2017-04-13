@@ -1,47 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:id="@+id/widget_list_item"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             android:background="@drawable/touch_selector_white">
+<FrameLayout
+    android:id="@+id/widget_list_item"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/touch_selector_white">
 
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
-        android:padding="8dp"
-        android:columnCount="2">
+        android:columnCount="2"
+        android:padding="@dimen/grid_padding">
 
         <TextView
             android:id="@+id/widgetSymbol"
             style="@style/CardStockSymbolTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:gravity="start|center_vertical"
-            tools:text="@string/fake_symbol"
-            android:layout_marginStart="@dimen/abc_list_item_padding_horizontal_material" />
+            tools:text="@string/fake_symbol"/>
 
         <TextView
             android:id="@+id/widgetPrice"
             style="@style/CardBidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/abc_list_item_padding_horizontal_material"
-            tools:text="@string/fake_price"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:gravity="end|center_vertical"
-            android:layout_gravity="end|center_vertical" />
+            tools:text="@string/fake_price"/>
 
         <TextView
             android:id="@+id/widgetAbsolut"
             style="@style/PercentChangeTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/activity_horizontal_margin"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingStart="3dp"
-            android:paddingEnd="3dp"
+            android:paddingEnd="@dimen/widget_change"
+            android:paddingStart="@dimen/widget_change"
             android:text="@string/fake_absolut"
-            android:layout_marginStart="@dimen/abc_list_item_padding_horizontal_material"
             />
 
         <TextView
@@ -49,15 +50,13 @@
             style="@style/PercentChangeTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/percent_change_pill_green"
-            android:paddingStart="3dp"
-            android:paddingEnd="3dp"
-            android:text="@string/fake_change"
             android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="@dimen/abc_list_item_padding_horizontal_material"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:background="@drawable/percent_change_pill_green"
+            android:paddingEnd="@dimen/widget_change"
+            android:paddingStart="@dimen/widget_change"
+            android:text="@string/fake_change"
             />
-
-
 
 
     </GridLayout>

@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">Stock Hawk</string>
+    <string name="app_name" translatable="false">Stock Hawk</string>
 
     <string name="pref_stocks_initialized_key" translatable="false">initialized</string>
 
-    <string name="pref_stocks_key">stocks</string>
+    <string name="pref_stocks_key" translatable="false">stocks</string>
 
 
-    <string name="pref_display_mode_key">displayMode</string>
+    <string name="pref_display_mode_key" translatable="false">displayMode</string>
     <string name="pref_display_mode_default">@string/pref_display_mode_percentage_key</string>
 
-    <string name="pref_display_mode_absolute_key">absolute</string>
-    <string name="pref_display_mode_percentage_key">percentage</string>
+    <string name="pref_display_mode_absolute_key" translatable="false">absolute</string>
+    <string name="pref_display_mode_percentage_key" translatable="false">percentage</string>
 
     <string name="default_stocks_yahoo">YHOO</string>
     <string name="default_stocks_apple">AAPL</string>
@@ -28,7 +28,7 @@
 
     <string name="error_no_network">No network connectivity! Will load stock cursor when the network is available.</string>
     <string name="error_no_stocks">No stocks added! Hit the floating action button to add one.</string>
-    <string name="error_empty_list">No stock information available</string>
+    <string name="error_empty_list">No stocks added!</string>
 
     <string name="toast_stock_added_no_connectivity">Symbol %s added. Will refresh when network available.</string>
     <string name="toast_no_connectivity">Will refresh when network available.</string>
@@ -44,18 +44,20 @@
 
     <!--Stock Widget strings -->
     <string name="stock_widget_no_info">There is no information for the selected Stock</string>
-    <string name="title_activity_stock_widget_configure">StockWidgetConfigure</string>
 
 
-    <!--Widget Configuration screen -->
-    <string name="conf_button">Add Stock</string>
-    <string name="conf_symbol">Symbol (e.g. GOOG)</string>
-    <string name="conf_invalid_app_widget_id">Invalid AppWidgetID</string>
 
-    <!-- StockProvider Strings -->
-    <string name="provider_db_not_open">database could not be opened</string>
-    <string name="provider_widget_not_inserted">Widget could not be inserted</string>
-    <string name="provider_widget_delete_problem">There was a problem deleting the Widget</string>
+
+
+
+    <string name="add_new_stock">Add new stock</string>
+    <string name="error_message">Error message</string>
+    <string name="stock_input_chars">ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="sample_stock">GOOG</string>
+    <string name="sample_stock_price">1000.00</string>
+    <string name="sample_stock_change">100%</string>
+    <string name="stock_closing_value">Stock Closing Value</string>
+    <string name="unknown_stock_error">Unknown stock! Try entering the correct stock symbol</string>
 
 
 </resources>

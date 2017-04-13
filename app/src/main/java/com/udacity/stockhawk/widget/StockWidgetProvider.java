@@ -49,6 +49,7 @@ public class StockWidgetProvider extends AppWidgetProvider {
             rv.setEmptyView(R.id.widget_list_new, R.id.widget_empty);
 
 
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.widget_list_new);
             // Tell the AppWidgetManager to perform an update on the current app widget
             appWidgetManager.updateAppWidget(appWidgetId, rv);
 

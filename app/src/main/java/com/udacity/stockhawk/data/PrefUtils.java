@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+import timber.log.Timber;
+
 public final class PrefUtils {
 
     private PrefUtils() {
@@ -45,6 +47,7 @@ public final class PrefUtils {
             stocks.add(symbol);
         } else {
             stocks.remove(symbol);
+            Timber.d("Stock removed: " + symbol);
         }
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

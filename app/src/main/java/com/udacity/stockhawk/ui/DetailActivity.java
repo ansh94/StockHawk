@@ -35,6 +35,7 @@ public class DetailActivity extends AppCompatActivity {
     @BindView(chart)
     BarChart mChart;
 
+    //Bar Entry class represents a single entry in the bar chart with x- and y-coordinate
     private List<BarEntry> historicalQuoteEntries;
 
     Calendar[] datesArray;
@@ -45,8 +46,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
-
-
 
 
         Bundle extras = getIntent().getExtras();
@@ -61,17 +60,18 @@ public class DetailActivity extends AppCompatActivity {
         displayChart();
     }
 
-    protected void extractHistoricalQuotes(){
+    protected void extractHistoricalQuotes() {
         Float close;
         historicalQuoteEntries = new ArrayList<>();
 
+        //Our history data in the form of a list
         List<String> historyQuotesList = Arrays.asList(history.split("\n"));
 
         int totalQuotes = historyQuotesList.size();
         datesArray = new Calendar[totalQuotes];
 
-        int i = totalQuotes-1;
-        for(String quote : historyQuotesList){
+        int i = totalQuotes - 1;
+        for (String quote : historyQuotesList) {
             String[] quoteItems = quote.split(",");
 
             datesArray[i] = Calendar.getInstance();
@@ -79,28 +79,35 @@ public class DetailActivity extends AppCompatActivity {
 
             close = Float.valueOf(quoteItems[1]);
 
+            // turning our data into BarEntry objects
             historicalQuoteEntries.add(new BarEntry(i, close));
 
-
-            //Timber.d("i : "+i +"   Date: "+datesArray[i].toString());
             i--;
 
         }
 
-        //Timber.d(historicalQuoteEntries.toString());
-        //Timber.d(datesArray.toString());
 
     }
 
 
-    protected  void displayChart(){
+    protected void displayChart() {
+        // BarDataSet objects hold data which belongs together, and allow individual styling of that data.
+
+        // adding entries to data set
         BarDataSet set = new BarDataSet(historicalQuoteEntries, "Stock Closing Value");
+
+        // setting the color
         set.setColors(ColorTemplate.COLORFUL_COLORS);
 
         BarData data = new BarData(set);
-        data.setBarWidth(0.9f); // set custom bar width
 
+        // setting the bar width
+        data.setBarWidth(0.9f);
+
+        // The XAxis class is the data and information container for everything related to the the horizontal axis.
         XAxis xAxis = mChart.getXAxis();
+
+        // set a custom value formatter
         xAxis.setValueFormatter(new XAxisValueFormatter(datesArray));
         xAxis.setGranularity(1f);
 
@@ -112,9 +119,13 @@ public class DetailActivity extends AppCompatActivity {
 
 
         mChart.setData(data);
-        mChart.setFitBars(true); // make the x-axis fit exactly all bars
-//        mChart.invalidate(); // refresh
-        mChart.animateXY(1000,1000);
+
+
+        // make the x-axis fit exactly all bars
+        mChart.setFitBars(true);
+
+        // animate x and y axes
+        mChart.animateXY(1000, 1000);
 
     }
 

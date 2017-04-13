@@ -21,7 +21,7 @@ public class XAxisValueFormatter implements IAxisValueFormatter {
         for(Calendar c: values){
             Timber.d(c.toString());
         }
-        //Timber.d("Hello  " +mValues[2].toString());
+
     }
 
     @Override

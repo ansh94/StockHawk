@@ -1,6 +1,8 @@
 package com.udacity.stockhawk.ui;
 
+import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -27,6 +29,7 @@ import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
+import com.udacity.stockhawk.widget.StockWidgetProvider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -174,6 +177,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
 
             PrefUtils.addStock(this, symbol);
+            Timber.d("Stock added: " + symbol);
             QuoteSyncJob.syncImmediately(this);
         }
     }
@@ -189,6 +193,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         swipeRefreshLayout.setRefreshing(false);
+
+        ComponentName name = new ComponentName(this, StockWidgetProvider.class);
+        int[] ids = AppWidgetManager.getInstance(this).getAppWidgetIds(name);
+        Intent intent = new Intent(this, StockWidgetProvider.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        sendBroadcast(intent);
 
         if (data.getCount() != 0) {
             error.setVisibility(View.GONE);
